@@ -28,6 +28,7 @@ jobs: ## jobs are run sequentially
     - id: s02 #use prebuilt actions
       uses: mscoutermarsh/cowsays-action@master
       with:
+      # step is called context so you know which one to reference
         text: 'moo moo moo ${{ steps.s01.outputs.CURR_DATE }}'
         color: 'green'
 
@@ -40,5 +41,22 @@ jobs: ## jobs are run sequentially
 
     runs-on: ubuntu-latest
     steps:
-    - id: s03
-      run: echo "Goodbye from GitHub Actions!"
+    - id: s02
+      name: Compute elapsed time
+      run: |
+        NOW=$(date +%s)
+        START=${{ steps.s01.outputs.CURR_DATE }}
+        DIFF=$(( NOW - START ))
+        echo "DIFF=$DIFF" >> $GITHUB_OUTPUT
+
+    - name: Cow says the saved time
+      uses: mscoutermarsh/cowsays-action@master
+      with:
+        text: "moo moo moo Saved time: ${{ steps.s01.outputs.CURR_DATE }}"
+        color: "green"
+
+    - name: Cow says the elapsed time
+      uses: mscoutermarsh/cowsays-action@master
+      with:
+        text: "Elapsed time is ${{ steps.s02.outputs.DIFF }} seconds"
+        color: "yellow"
