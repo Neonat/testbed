@@ -9,7 +9,7 @@ name: hello_world
 
 # trigger
 on: ## on is an array
-- push:
+- push
 
 # one or more jobs
 jobs: ## jobs are run sequentially
