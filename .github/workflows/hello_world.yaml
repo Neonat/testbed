@@ -28,8 +28,8 @@ jobs: ## jobs are run sequentially
     - id: s02 #use prebuilt actions
       uses: mscoutermarsh/cowsays-action@master
       with:
-        text: 'moo moo moo'
-        color: 'red'
+        text: 'moo moo moo ${{ steps.s01.outputs.CURR_DATE }}'
+        color: 'green'
 
     # - id: s01
     #   run: ls -al
