@@ -18,5 +18,5 @@ jobs: ## jobs are run sequentially
     steps: 
     - id: s00 #id each step
       #running some shell bash command
-      run: echo "Current time in GitHub is $(date)"
-  goodbye: # group jobs logically
+      run: echo "Current time in GitHub is $(date)" #works like Python f-strings
+  #goodbye: # group jobs logically
