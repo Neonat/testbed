@@ -53,7 +53,7 @@ jobs: ## jobs are run sequentially
     - name: Cow says the saved time
       uses: mscoutermarsh/cowsays-action@master
       with:
-        text: "moo moo moo Saved time: ${{ steps.s01.outputs.CURR_DATE }}"
+        text: "moo moo moo Saved time (epoch): ${{ steps.s01.outputs.CURR_DATE }}"
         color: "green"
 
     - name: Cow says the elapsed time
